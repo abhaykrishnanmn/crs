@@ -1,0 +1,49 @@
+{% extends "../pages/base.html" %}
+{% load static %}
+{% block title %}
+ASIET
+{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="/static/coordinator.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+{% endblock head %}
+{% block body %}
+<br><br><br>
+<h1 style="text-align:center">Student Details</h1>
+<div style="overflow-x:auto;">
+    <!-- student_list.html -->
+    <div class="style=display: flex;"><p><h3>Upload Student Details</h3></p><a href="/excelfile" style="text-decoration:none"><button class="card__btn">upload</button></a><br></div>  
+    {% comment %} <br>
+    <div class="style=display: flex;"><p><h3>Upload Placed Student Details</h3></p><a href="/excelfiles" style="text-decoration:none"><button class="card__btn">upload</button></a><br></div>   {% endcomment %}
+    <br>
+<table class="tbl" style="margin-left:5%">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Roll No.</th>
+      <th>CGPA</th>
+      <th>Email</th>
+      <th>Backlogs</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in studentcs %}
+      <tr>
+        <td>{{ student.name }}</td>
+        <td>{{ student.roll_no }}</td>
+        <td>{{ student.cgpa }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.bklgs }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><h3>{{ message }}</h3></li>
+  {% endfor %}
+</ul>
+{% endif %}
+    </div>
+    {% endblock body %}
