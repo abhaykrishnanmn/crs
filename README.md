@@ -18,5 +18,6 @@ python manage.py runserver
 
 ## Working ##
 
-![Project](https://github.com/abhaykrishnanmn/crs/assets/75512915/8e207a9b-42cb-4a21-949c-d5ada31cef3f)
+![Project](https://github.com/abhaykrishnanmn/crs/assets/75512915/e6bcb6a4-ad48-4e8d-b33c-ce46a9829187)
+
 
