@@ -94,8 +94,8 @@ def forgot_password(request):
         uidb64 = urlsafe_base64_encode(str(user.id).encode())
         token = default_token_generator.make_token(user)
         reset_url = f'http://127.0.0.1:8000/reset_password/{uidb64}/{token}'
-        print(uidb64)
-        print(token)
+        # print(uidb64)
+        # print(token)
         subject = 'Reset Password'
         message = f'Set your new password: {reset_url}'
         from_email = 'placementcellasiet@outlook.com'
@@ -114,13 +114,13 @@ def forgot_password(request):
 
 @csrf_exempt
 def reset_password(request, uidb64, token):
-    print(uidb64)
-    print(token)
+    # print(uidb64)
+    # print(token)
     if request.method == 'POST':
         newpass = request.POST['newpass']
         conpass = request.POST['conpass']
-        print(uidb64)
-        print(token)
+        # print(uidb64)
+        # print(token)
         if newpass == conpass:
             User = get_user_model()
             try:
@@ -174,12 +174,12 @@ def user_signup(request):
         else:
             user = User(username=username,password=hashed_password,email=email)
             user.save()
-            print(user)
+            # print(user)
             user_profile = UserProfile(user=user, regno=regno)
             user_profile.save()
             prof = Profile(user=user)
             prof.save()
-            print(prof)
+            # print(prof)
             user = authenticate(request, username=username, password=password)
             login(request,user)
             return redirect('/home')
@@ -328,7 +328,7 @@ def unregister(request,id):
 @csrf_exempt
 def regdrive(request,id):
     drive = Drives.objects.filter(pk=id).first()
-    print(drive.id)
+    # print(drive.id)
     # tags = drive.drive_tags.split(',')
     context={
         'drive':drive,
@@ -424,8 +424,8 @@ def createdrive(request):
 def checkout(request,id):
     eve = Drives.objects.get(pk=id)
     profile = Profile.objects.get(user=request.user)
-    print(profile.cgpa)
-    print(profile.bklgs)
+    # print(profile.cgpa)
+    # print(profile.bklgs)
     if profile.cgpa == None or profile.bklgs == None:
         messages.success(request, "Request your class tutor to upload your cgpa and no. of backlogs if any.")
         return redirect('/getyourdrives')
