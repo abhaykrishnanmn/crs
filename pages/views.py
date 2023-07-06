@@ -262,8 +262,8 @@ def offc(request):
                 company_name = job.find('div',class_ ='td-module-meta-info').encode('utf-8')
                 co=company_name.decode('ascii','ignore')
                 f.write(f"<br>")
-                f.write(f"<h3> Company : {i}</h3>\n")
-                f.write(f"<h4><br> {co} <br></h4> \n ")
+                f.write(f"<h3> Company : {i}\n")
+                f.write(f" {co} </h3> \n ")
                 i+=1
             f.write(f'</div>')
             f.write(f"</body>\n")
