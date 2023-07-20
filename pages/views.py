@@ -98,7 +98,7 @@ def forgot_password(request):
     #     # print(token)
     #     subject = 'Reset Password'
     #     message = f'Set your new password: {reset_url}'
-    #     from_email = 'placementcellasiet@outlook.com'
+    #     from_email = 'Your Gmail address'
     #     recipient_list = [user.email]
     #     try:
     #         send_mail(subject, message, from_email, recipient_list, html_message=message)
@@ -377,14 +377,14 @@ def drivecreate(request):
         </body>
         </html>
         """
-        from_email = 'placementcellasiet@outlook.com'
+        from_email = 'Your gmail address'
         recipient_list = [user.email for user in User.objects.all()]
         send_mail(subject, message, from_email, recipient_list, html_message=message)
 
         # subject = 'New Placement drive details'
         # user=User.objects.all()
         # message = f"Hello,\n\nA new drive '{drive_name}' has been created by Placement Cell, ASIET.\n\nDrive details:-\n\nRole: {drive_role}\nPackage: {drive_pckg}\nDate: {drive_date}\nBacklogs: {drive_bklgs}\nCGPA: {drive_cgpa}\n\nDescription: {drive_desc1}"
-        # from_email = 'placementcellasiet@outlook.com'
+        # from_email = 'Your gmail address'
         # recipient_list = [user.email for user in User.objects.all()]
         # send_mail(subject, message, from_email, recipient_list)
         
@@ -565,7 +565,7 @@ def contact(request):
         from_email = request.POST.get('email')
         subject = request.POST.get('subject')
         message = request.POST.get('message')
-        recipient_list = ["placementcellasiet@outlook.com"]
+        recipient_list = ["your gmail address"]
         send_mail(subject, message, from_email, recipient_list, html_message=message)
         return redirect('http://127.0.0.1:8000/')
     return render(request,'pages/home.html')
