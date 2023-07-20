@@ -82,33 +82,33 @@ def resetpass(request,id):
 
 
 def forgot_password(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        User = get_user_model()
-        try:
-            user = User.objects.get(email=email)
-        except User.DoesNotExist:
-            messages.error(request, 'This email is not registered with us.')
-            return redirect('/forgot_password')
+    # if request.method == 'POST':
+    #     email = request.POST.get('email')
+    #     User = get_user_model()
+    #     try:
+    #         user = User.objects.get(email=email)
+    #     except User.DoesNotExist:
+    #         messages.error(request, 'This email is not registered with us.')
+    #         return redirect('/forgot_password')
 
-        uidb64 = urlsafe_base64_encode(str(user.id).encode())
-        token = default_token_generator.make_token(user)
-        reset_url = f'http://127.0.0.1:8000/reset_password/{uidb64}/{token}'
-        # print(uidb64)
-        # print(token)
-        subject = 'Reset Password'
-        message = f'Set your new password: {reset_url}'
-        from_email = 'placementcellasiet@outlook.com'
-        recipient_list = [user.email]
-        try:
-            send_mail(subject, message, from_email, recipient_list, html_message=message)
-            messages.success(request, 'Your password reset link has been sent to your email.')
-        except Exception as e:
-            messages.error(request, f'Failed to send password reset email: {str(e)}')
+    #     uidb64 = urlsafe_base64_encode(str(user.id).encode())
+    #     token = default_token_generator.make_token(user)
+    #     reset_url = f'http://127.0.0.1:8000/reset_password/{uidb64}/{token}'
+    #     # print(uidb64)
+    #     # print(token)
+    #     subject = 'Reset Password'
+    #     message = f'Set your new password: {reset_url}'
+    #     from_email = 'placementcellasiet@outlook.com'
+    #     recipient_list = [user.email]
+    #     try:
+    #         send_mail(subject, message, from_email, recipient_list, html_message=message)
+    #         messages.success(request, 'Your password reset link has been sent to your email.')
+    #     except Exception as e:
+    #         messages.error(request, f'Failed to send password reset email: {str(e)}')
 
-        return redirect('/login')
+    #     return redirect('/login')
 
-    return render(request, 'userreg/forgot_password.html')
+    # return render(request, 'userreg/forgot_password.html')
 
 
 
