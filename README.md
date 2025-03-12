@@ -22,7 +22,11 @@ python manage.py runserver
 
 
 
-https://github.com/user-attachments/assets/a962df51-bbf0-4b2c-b9c3-2bd7023aa9a8
+
+https://github.com/user-attachments/assets/45d6a298-a53b-4999-9c48-497c55fb8159
+
+
+
 
 
 
